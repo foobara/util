@@ -1,11 +1,5 @@
-# frozen_string_literal: true
-
 RSpec.describe Foobara::Util do
   it "has a version number" do
-    expect(Foobara::Util::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(Foobara::Util::VERSION).to_not be_nil
   end
 end

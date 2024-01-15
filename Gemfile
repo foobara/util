@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 ruby File.read("#{__dir__}/.ruby-version")
 
 source "https://rubygems.org"

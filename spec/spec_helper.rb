@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "foobara/util"
 
 RSpec.configure do |config|

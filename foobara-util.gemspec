@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative "lib/foobara/util/version"
 
 Gem::Specification.new do |spec|
@@ -24,5 +22,7 @@ Gem::Specification.new do |spec|
     "src/**/*",
     "LICENSE.txt"
   ]
+
   spec.require_paths = ["lib"]
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
