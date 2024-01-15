@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
     "src/**/*",
     "LICENSE.txt"
   ]
-  spec.require_paths = ["lib", "src"]
+  spec.require_paths = ["lib"]
 end
