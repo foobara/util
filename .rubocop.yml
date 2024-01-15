@@ -1,13 +1,14 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.2
+  NewCops: enable
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+inherit_gem:
+  foobara-rubocop-rules:
+    - rules/*
 
-Layout/LineLength:
-  Max: 120
+
+Naming/FileName:
+  inherit_mode:
+    merge:
+      - Exclude
