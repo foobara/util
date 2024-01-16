@@ -30,5 +30,5 @@ RSpec.configure do |config|
   # config.raise_errors_for_deprecations!
 end
 
-require "foobara/util/all"
+require "foobara/util"
 require "foobara/spec_helpers/all"
