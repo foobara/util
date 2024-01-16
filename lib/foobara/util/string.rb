@@ -39,7 +39,7 @@ module Foobara
         string = string.to_s
       end
 
-      if string.chars.all? { |char| IS_CAP =~ char }
+      if string =~ /\A[A-Z_]*\z/
         string.dup
       else
         underscore(string).upcase
@@ -67,9 +67,12 @@ module Foobara
           if IS_CAP =~ char
             char = char.downcase
             char = "_#{char}" unless is_start
+            is_start = false
+          elsif char == "_"
+            is_start = true
+          else
+            is_start = false
           end
-
-          is_start = false
         else
           is_start = true
         end
