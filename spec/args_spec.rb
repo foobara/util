@@ -2,11 +2,26 @@ RSpec.describe Foobara::Util do
   describe ".args_and_opts_to_opts" do
     subject { described_class.args_and_opts_to_opts(args, opts) }
 
+    let(:args) { [] }
+    let(:opts) { {} }
+
     context "when args is a hash and so is opts" do
       let(:args) { [{ a: 1, b: 2 }] }
       let(:opts) { { c: 3, d: 4 } }
 
       it { is_expected.to eq(a: 1, b: 2, c: 3, d: 4) }
+    end
+
+    context "with no args" do
+      it { is_expected.to be(opts) }
+    end
+
+    context "with one arg" do
+      let(:args) { ["arg"] }
+
+      context "with no opts" do
+        it { is_expected.to eq("arg") }
+      end
     end
   end
 
@@ -58,25 +73,6 @@ RSpec.describe Foobara::Util do
         let(:opts) { { baz: :baz } }
 
         it { is_expected.to eq([{ foo: :bar, baz: :baz }]) }
-      end
-    end
-  end
-
-  describe ".args_and_opts_to_opts" do
-    subject { described_class.args_and_opts_to_opts(args, opts) }
-
-    let(:args) { [] }
-    let(:opts) { {} }
-
-    context "with no args" do
-      it { is_expected.to be(opts) }
-    end
-
-    context "with one arg" do
-      let(:args) { ["arg"] }
-
-      context "with no opts" do
-        it { is_expected.to eq("arg") }
       end
     end
   end
