@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir[
     "lib/**/*",
-    "src/**/*",
     "LICENSE.txt"
   ]
 
