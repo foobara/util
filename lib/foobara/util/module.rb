@@ -39,7 +39,6 @@ module Foobara
       if inherit
         superklass = mod.superclass
         values = constant_values(mod, is_a:, extends:)
-
         if superklass == Object
           values
         else
@@ -57,7 +56,7 @@ module Foobara
             (extends.nil? || extends.empty? || (object.is_a?(Class) && extends.any? do |klass|
               object.ancestors.include?(klass)
             end))
-        end
+        end.compact
       end
     end
 
