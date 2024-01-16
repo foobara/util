@@ -6,4 +6,52 @@ RSpec.describe Foobara::Util do
       end
     end
   end
+
+  describe ".underscore_sym" do
+    it "underscores" do
+      expect(described_class.underscore_sym(:"Foo_Bar!bazYo")).to eq(:"foo_bar!baz_yo")
+    end
+  end
+
+  describe ".camelize" do
+    it "camelizes" do
+      expect(described_class.camelize(:class_methods)).to eq("classMethods")
+    end
+  end
+
+  describe ".classify" do
+    it "classifies" do
+      expect(described_class.classify("class_methods")).to eq("ClassMethods")
+    end
+  end
+
+  describe ".constantify_sym" do
+    it "constantifies" do
+      expect(described_class.constantify_sym("ClassMethods")).to eq(:CLASS_METHODS)
+    end
+
+    context "when already constantified" do
+      it "returns the thing duped" do
+        expect(described_class.constantify_sym(:CLASS_METHODS)).to eq(:CLASS_METHODS)
+      end
+    end
+  end
+
+  describe ".to_or_sentence" do
+    it "joins the phrases with 'or'" do
+      expect(described_class.to_or_sentence(%w[foo bar baz])).to eq("foo, bar, or baz")
+    end
+
+    context "with only one phrase" do
+      it "returns the phrase" do
+        expect(described_class.to_or_sentence(%w[foo])).to eq("foo")
+      end
+    end
+  end
+
+  describe ".humanize" do
+    it "humanizes" do
+      expect(described_class.humanize(:foo_bar_baz)).to eq("Foo bar baz")
+    end
+  end
 end
