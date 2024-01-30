@@ -13,6 +13,13 @@ RSpec.describe Foobara::Util do
     end
   end
 
+  describe ".kebab_case" do
+    it "kebab cases the thing" do
+      expect(described_class.kebab_case(:foo_bar_baz)).to eq("foo-bar-baz")
+      expect(described_class.kebab_case("FooBarBaz::FooBar")).to eq("foo-bar-baz::foo-bar")
+    end
+  end
+
   describe ".camelize" do
     it "camelizes" do
       expect(described_class.camelize(:class_methods)).to eq("classMethods")

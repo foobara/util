@@ -83,6 +83,10 @@ module Foobara
       retval
     end
 
+    def kebab_case(string)
+      underscore(string)&.gsub("_", "-")
+    end
+
     def underscore_sym(string)
       underscore(string)&.to_sym
     end
