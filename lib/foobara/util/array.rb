@@ -28,5 +28,13 @@ module Foobara
     def all_symbolizable_elements?(array)
       array.all? { |key| key.is_a?(Symbol) || key.is_a?(String) }
     end
+
+    def all_blank_or_false?(array)
+      array.all? do |element|
+        element.nil? || element == false || (
+          (element.is_a?(::Hash) || element.is_a?(::Array) || element.is_a?(::String)) && element.empty?
+        )
+      end
+    end
   end
 end

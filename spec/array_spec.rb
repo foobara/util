@@ -18,4 +18,22 @@ RSpec.describe Foobara::Util do
       )
     end
   end
+
+  describe ".all_blank_or_false?" do
+    subject { described_class.all_blank_or_false?(array) }
+
+    context "when all empty nil or false" do
+      let(:array) do
+        [
+          nil,
+          false,
+          {},
+          [],
+          ""
+        ]
+      end
+
+      it { is_expected.to be(true) }
+    end
+  end
 end
