@@ -16,7 +16,13 @@ module Foobara
     end
 
     def non_full_name(mod)
-      mod.name&.[](/([^:]+)\z/, 1)
+      name = if mod.is_a?(::String)
+               mod
+             else
+               mod.name
+             end
+
+      name&.[](/([^:]+)\z/, 1)
     end
 
     def non_full_name_underscore(mod)

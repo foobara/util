@@ -7,6 +7,16 @@ RSpec.describe Foobara::Util do
     stub_module "Foo::Bar::Baz"
   end
 
+  describe ".non_full_name" do
+    subject { described_class.non_full_name(mod) }
+
+    context "when passing a string" do
+      let(:mod) { "Foo::Bar::Baz" }
+
+      it { is_expected.to eq("Baz") }
+    end
+  end
+
   describe ".const_get_up_hierarchy" do
     subject { described_class.const_get_up_hierarchy(mod, name) }
 
