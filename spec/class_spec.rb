@@ -29,6 +29,19 @@ RSpec.describe Foobara::Util do
     end
   end
 
+  describe ".instances" do
+    let(:klass) { stub_class "SomeClass" }
+
+    it "returns the instances" do
+      expect(described_class.instances(klass)).to be_empty
+
+      instance = klass.new
+      instance2 = klass.new
+
+      expect(described_class.instances(klass)).to contain_exactly(instance, instance2)
+    end
+  end
+
   describe ".super_method_takes_parameters?" do
     it "returns if the super method takes parameters or not" do
       instance = Foo::Bar::Baz.new

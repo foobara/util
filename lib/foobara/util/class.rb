@@ -13,6 +13,12 @@ module Foobara
       all
     end
 
+    # WARNING: This approach is known as being slow. Probably better for you class to track its own instances
+    # if this is being used for smoething more than debugging.
+    def instances(klass)
+      ObjectSpace.each_object(klass).to_a
+    end
+
     # Kind of surprising that Ruby doesn't have a built in way to do this.
     def super_method_of(current_instance, from_class, method_name)
       method = current_instance.method(method_name)
