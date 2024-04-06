@@ -63,5 +63,9 @@ module Foobara
     def make_module(name, &)
       make_class(name, which: :module, &)
     end
+
+    def make_module_p(name, &)
+      make_class_p(name, which: :module, &)
+    end
   end
 end

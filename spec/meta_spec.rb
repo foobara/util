@@ -63,4 +63,18 @@ RSpec.describe Foobara::Util do
       expect(A::B::C::D).to be < String
     end
   end
+
+  describe ".make_module_p" do
+    before do
+      described_class.make_module("A")
+    end
+
+    it "creates all the missing modules along the way" do
+      described_class.make_module_p("A::B::C::D")
+
+      expect(A::B).to be_a(Module)
+      expect(A::B::C).to be_a(Module)
+      expect(A::B::C::D).to be_a(Module)
+    end
+  end
 end
