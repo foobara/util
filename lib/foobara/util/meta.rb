@@ -52,6 +52,14 @@ module Foobara
       klass
     end
 
+    def make_class_p(name, superclass = nil, which: :class, &)
+      make_class(name, superclass, which:, &)
+    rescue ParentModuleDoesNotExistError => e
+      make_class_p(e.parent_name, which: :module, &)
+      make_class(name, superclass, which:, &)
+    end
+
+    # TODO: Kind of weird that make_module is implemented in terms of make_class instead of the other way around
     def make_module(name, &)
       make_class(name, which: :module, &)
     end
