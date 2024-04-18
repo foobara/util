@@ -21,12 +21,12 @@ module Foobara
         object.map { |element| deep_dup(element) }
       when ::Hash
         object.to_h { |k, v| [deep_dup(k), deep_dup(v)] }
-      when ::Module
-        # we get super wacky results in some areas where we use entity classes as short-cuts for their entity types
-        # if we dup those classes (they lose their name, for example)
-        object
-      else
+      when ::String
+        # Important to not dup ::Module... but going to exclude everything but String for now to prevent that issue
+        # and others.
         object.dup
+      else
+        object
       end
     end
   end
