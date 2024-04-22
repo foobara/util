@@ -13,7 +13,7 @@ module Foobara
 
     module_function
 
-    def make_class(name, superclass = nil, which: :class, &block)
+    def make_class(name, superclass = nil, which: :class, tag: false, &block)
       name = name.to_s if name.is_a?(::Symbol)
 
       if superclass.is_a?(Class)
@@ -25,6 +25,10 @@ module Foobara
       superclass ||= :Object
 
       name = name[2..] if name.start_with?("::")
+
+      if !Object.const_defined?(name) && tag
+        should_tag = true
+      end
 
       parent_name = parent_module_name_for(name)
 
@@ -41,6 +45,10 @@ module Foobara
 
       klass = Object.const_get(name)
 
+      if should_tag
+        klass.instance_variable_set(:@foobara_created_via_make_class, true)
+      end
+
       if block
         if which == :module
           klass.module_eval(&block)
@@ -52,11 +60,11 @@ module Foobara
       klass
     end
 
-    def make_class_p(name, superclass = nil, which: :class, &)
-      make_class(name, superclass, which:, &)
+    def make_class_p(name, superclass = nil, which: :class, tag: false, &)
+      make_class(name, superclass, which:, tag:, &)
     rescue ParentModuleDoesNotExistError => e
-      make_class_p(e.parent_name, which: :module, &)
-      make_class(name, superclass, which:, &)
+      make_class_p(e.parent_name, which: :module, tag:, &)
+      make_class(name, superclass, which:, tag:, &)
     end
 
     # TODO: Kind of weird that make_module is implemented in terms of make_class instead of the other way around
@@ -64,8 +72,8 @@ module Foobara
       make_class(name, which: :module, &)
     end
 
-    def make_module_p(name, &)
-      make_class_p(name, which: :module, &)
+    def make_module_p(name, tag: false, &)
+      make_class_p(name, which: :module, tag:, &)
     end
   end
 end

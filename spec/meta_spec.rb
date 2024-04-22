@@ -54,13 +54,18 @@ RSpec.describe Foobara::Util do
       described_class.make_module("A")
     end
 
-    it "creates all the missing modules along the way" do
-      described_class.make_class_p("A::B::C::D", String)
+    it "creates all the missing modules along the way and tags non-existent ones" do
+      described_class.make_class_p("A::B::C::D", String, tag: true)
 
       expect(A::B).to be_a(Module)
       expect(A::B::C).to be_a(Module)
       expect(A::B::C::D).to be_a(Class)
       expect(A::B::C::D).to be < String
+
+      expect(A.instance_variable_defined?(:@foobara_created_via_make_class)).to be(false)
+      expect(A::B.instance_variable_defined?(:@foobara_created_via_make_class)).to be(true)
+      expect(A::B::C.instance_variable_defined?(:@foobara_created_via_make_class)).to be(true)
+      expect(A::B::C::D.instance_variable_defined?(:@foobara_created_via_make_class)).to be(true)
     end
   end
 
