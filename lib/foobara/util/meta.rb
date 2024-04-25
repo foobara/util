@@ -26,34 +26,38 @@ module Foobara
 
       name = name[2..] if name.start_with?("::")
 
-      if !Object.const_defined?(name) && tag
+      already_exists = Object.const_defined?(name, false)
+
+      if !already_exists && tag
         should_tag = true
       end
 
       parent_name = parent_module_name_for(name)
 
-      if parent_name && !Object.const_defined?(parent_name)
+      if parent_name && !Object.const_defined?(parent_name, false)
         raise ParentModuleDoesNotExistError.new(name:, parent_name:)
       end
 
-      # rubocop:disable Security/Eval, Style/DocumentDynamicEvalDefinition
-      eval(<<~RUBY, binding, __FILE__, __LINE__ + 1)
-        #{which} ::#{name}#{inherit}
-        end
-      RUBY
-      # rubocop:enable Security/Eval, Style/DocumentDynamicEvalDefinition
+      unless already_exists
+        # rubocop:disable Security/Eval, Style/DocumentDynamicEvalDefinition
+        eval(<<~RUBY, binding, __FILE__, __LINE__ + 1)
+          #{which} ::#{name}#{inherit}
+          end
+        RUBY
+        # rubocop:enable Security/Eval, Style/DocumentDynamicEvalDefinition
+      end
 
-      klass = Object.const_get(name)
+      klass = Object.const_get(name, false)
 
       if should_tag
         klass.instance_variable_set(:@foobara_created_via_make_class, true)
       end
 
       if block
-        if which == :module
-          klass.module_eval(&block)
-        else
+        if klass.is_a?(::Class)
           klass.class_eval(&block)
+        else
+          klass.module_eval(&block)
         end
       end
 
