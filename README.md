@@ -42,4 +42,23 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/foobar
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the terms of the MIT License, Apache License 2.0, or Mozilla Public License 2.0.
+
+You may choose the license that best suits your needs.
+
+This is equivalent to the following SPDX License Expression: MIT OR Apache-2.0 OR MPL-2.0
+
+- [MIT License](LICENSE-MIT.txt)
+- [Apache License 2.0](LICENSE-APACHE.txt)
+- [Mozilla Public License 2.0](LICENSE-MPL.txt)
+
+This is referred to affectionately in the .gemspec as the "Foobara Delayed Choice License" and is just an alias
+for this triple licensing.
+
+At some point, this project might be released under either `MIT OR Apache 2.0` or `MPL-2.0`
+if one or the other option reveals itself to be more appropriate for this project.
+
+For the rationale behind this licensing decision, please see
+the [Decision Log](https://github.com/foobara/foobara/blob/main/CHANGELOG.md)
+
+Foobara is Copyright (c) 2023-2024 Miles Georgi

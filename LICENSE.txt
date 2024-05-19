@@ -1,0 +1,9 @@
+Foobara is Copyright (c) 2023-2024 Miles Georgi and licensed under any of the following licenses:
+
+Apache-2.0 License: LICENSE-APACHE.txt or https://www.apache.org/licenses/LICENSE-2.0.txt
+MIT License: LICENSE-MIT.txt or https://opensource.org/licenses/MIT
+MPL-2.0 License: LICENSE-MPL.txt or https://www.mozilla.org/en-US/MPL/2.0/
+
+You may choose the license that best suits your needs.
+
+This is equivalent to the following SPDX License Expression: MIT OR Apache-2.0 OR MPL-2.0
