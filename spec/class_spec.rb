@@ -50,4 +50,22 @@ RSpec.describe Foobara::Util do
       expect(described_class.super_method_takes_parameters?(instance, from_class, :a)).to be(false)
     end
   end
+
+  describe ".find_constant_through_class_hierarchy" do
+    before do
+      Foo.const_set("SOME_CONST", "some const")
+    end
+
+    it "can find constants up the class heirarchy" do
+      expect(described_class.find_constant_through_class_hierarchy(Foo::Bar::Baz, "SOME_CONST")).to eq("some const")
+    end
+
+    context "when constant doesn't exist" do
+      it "raises NameError" do
+        expect {
+          described_class.find_constant_through_class_hierarchy(Foo::Bar::Baz, "DOES_NOT_EXIST")
+        }.to raise_error(NameError)
+      end
+    end
+  end
 end
