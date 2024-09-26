@@ -29,5 +29,13 @@ module Foobara
     def super_method_takes_parameters?(current_instance, from_class, method_name)
       super_method_of(current_instance, from_class, method_name).parameters.any?
     end
+
+    def find_constant_through_class_hierarchy(klass, constant)
+      if klass.const_defined?(constant)
+        klass.const_get(constant)
+      else
+        find_constant_through_class_hierarchy(klass.superclass, constant)
+      end
+    end
   end
 end

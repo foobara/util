@@ -1,3 +1,7 @@
+## [0.0.6] - 2024-09-26
+
+* Add find_constant_through_class_hierarchy
+
 ## [0.0.4] - 2024-05-30
 
 * Add Apache-2.0 license, resulting in a dual-licensed project
