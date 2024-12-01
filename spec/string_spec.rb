@@ -30,6 +30,12 @@ RSpec.describe Foobara::Util do
     it "classifies" do
       expect(described_class.classify("class_methods")).to eq("ClassMethods")
     end
+
+    context "when kebab instead of underscore" do
+      it "classifies" do
+        expect(described_class.classify("class-methods-kebab")).to eq("ClassMethodsKebab")
+      end
+    end
   end
 
   describe ".constantify_sym" do

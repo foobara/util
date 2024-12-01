@@ -16,7 +16,7 @@ module Foobara
       retval = ""
 
       string.each_char do |char|
-        if char == "_"
+        if ["_", "-"].include?(char)
           upcase_first = true
         elsif upcase_first
           retval << char.upcase

@@ -1,3 +1,7 @@
+## [0.0.7] - 2024-11-30
+
+* Handle kebab-cased strings as expected in .classify
+
 ## [0.0.6] - 2024-09-26
 
 * Add find_constant_through_class_hierarchy
