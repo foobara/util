@@ -1,3 +1,7 @@
+## [0.0.8] - 2024-12-05
+
+* Add .print_tree for displaying dependencies/graphs via ASCII art
+
 ## [0.0.7] - 2024-11-30
 
 * Handle kebab-cased strings as expected in .classify
