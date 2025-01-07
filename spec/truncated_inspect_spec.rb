@@ -37,7 +37,7 @@ RSpec.describe Foobara::TruncatedInspect do
     context "when foo is a hash" do
       let(:foo) { { a: 1, b: 2, c: 3 } }
 
-      it { is_expected.to match(/foo=\{:a=>1, :b=>2, :c=>3\}/) }
+      it { is_expected.to match(/foo=\{a: 1, b: 2, c: 3\}/) }
 
       context "when foo is too long" do
         let(:foo) do

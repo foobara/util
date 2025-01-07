@@ -1,8 +1,8 @@
-ruby File.read("#{__dir__}/.ruby-version")
+require_relative "version"
 
 source "https://rubygems.org"
+ruby Foobara::Util::MINIMUM_RUBY_VERSION
 
-# Specify your gem's dependencies in foobara-util.gemspec
 gemspec
 
 # Development dependencies go here

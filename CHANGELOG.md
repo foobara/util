@@ -1,3 +1,7 @@
+## [0.0.9] - 2025-01-07
+
+- Bump Ruby to 3.4.1
+
 ## [0.0.8] - 2024-12-05
 
 * Add .print_tree for displaying dependencies/graphs via ASCII art
