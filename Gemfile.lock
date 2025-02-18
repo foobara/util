@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-util (0.0.10)
+    foobara-util (0.0.11)
 
 GEM
   remote: https://rubygems.org/
