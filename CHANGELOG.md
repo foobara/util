@@ -1,3 +1,8 @@
+## [0.0.10] - 2025-02-18
+
+- Bump Ruby to 3.4.2
+- Make .constantize work with kebab-cased strings
+
 ## [0.0.9] - 2025-01-07
 
 - Bump Ruby to 3.4.1

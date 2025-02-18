@@ -59,6 +59,8 @@ module Foobara
 
       return "" if string.empty?
 
+      string = string.gsub("-", "_")
+
       retval = ""
       is_start = true
 

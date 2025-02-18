@@ -38,6 +38,14 @@ RSpec.describe Foobara::Util do
     end
   end
 
+  describe ".constantify" do
+    context "when it has hyphens" do
+      it "converts hyphens to underscores" do
+        expect(described_class.constantify("foo-bar-baz")).to eq("FOO_BAR_BAZ")
+      end
+    end
+  end
+
   describe ".constantify_sym" do
     it "constantifies" do
       expect(described_class.constantify_sym("ClassMethods")).to eq(:CLASS_METHODS)
