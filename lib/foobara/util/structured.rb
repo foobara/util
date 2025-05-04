@@ -15,6 +15,19 @@ module Foobara
       end
     end
 
+    def deep_symbolize_keys(object)
+      case object
+      when ::Array
+        object.map { |element| deep_symbolize_keys(element) }
+      when ::Hash
+        object.to_h do |k, v|
+          [k.is_a?(::String) ? k.to_sym : k, deep_symbolize_keys(v)]
+        end
+      else
+        object
+      end
+    end
+
     def deep_dup(object)
       case object
       when ::Array
