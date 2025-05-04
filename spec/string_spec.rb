@@ -60,12 +60,12 @@ RSpec.describe Foobara::Util do
 
   describe ".to_or_sentence" do
     it "joins the phrases with 'or'" do
-      expect(described_class.to_or_sentence(%w[foo bar baz])).to eq("foo, bar, or baz")
+      expect(described_class.to_or_sentence(["foo", "bar", "baz"])).to eq("foo, bar, or baz")
     end
 
     context "with only one phrase" do
       it "returns the phrase" do
-        expect(described_class.to_or_sentence(%w[foo])).to eq("foo")
+        expect(described_class.to_or_sentence(["foo"])).to eq("foo")
       end
     end
   end

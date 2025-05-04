@@ -1,3 +1,7 @@
+## [0.0.12] - 2025-05-03
+
+- Add .deep_symbolize_keys
+
 ## [0.0.11] - 2025-02-18
 
 - Bump Ruby to 3.4.2

@@ -76,7 +76,7 @@ RSpec.describe Foobara::Util do
 
       context "when inherit is true" do
         it "returns the inherited constants" do
-          expect(described_class.constant_values(Foo::Class2, inherit: true)).to match_array(%w[const1 const2])
+          expect(described_class.constant_values(Foo::Class2, inherit: true)).to contain_exactly("const1", "const2")
         end
       end
 

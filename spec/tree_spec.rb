@@ -2,24 +2,24 @@ RSpec.describe Foobara::Util do
   let(:pairs) do
     [
       ["duck", nil],
-      %w[atomic_duck duck],
-      %w[symbol atomic_duck],
-      %w[number atomic_duck],
-      %w[integer number],
-      %w[float number],
-      %w[big_decimal number],
-      %w[string atomic_duck],
-      %w[email string],
-      %w[date atomic_duck],
-      %w[datetime atomic_duck],
-      %w[boolean atomic_duck],
-      %w[model atomic_duck],
-      %w[entity model],
-      %w[duckture duck],
-      %w[array duckture],
-      %w[tuple array],
-      %w[associative_array duckture],
-      %w[attributes associative_array]
+      ["atomic_duck", "duck"],
+      ["symbol", "atomic_duck"],
+      ["number", "atomic_duck"],
+      ["integer", "number"],
+      ["float", "number"],
+      ["big_decimal", "number"],
+      ["string", "atomic_duck"],
+      ["email", "string"],
+      ["date", "atomic_duck"],
+      ["datetime", "atomic_duck"],
+      ["boolean", "atomic_duck"],
+      ["model", "atomic_duck"],
+      ["entity", "model"],
+      ["duckture", "duck"],
+      ["array", "duckture"],
+      ["tuple", "array"],
+      ["associative_array", "duckture"],
+      ["attributes", "associative_array"]
     ]
   end
   let(:to_parent) do
