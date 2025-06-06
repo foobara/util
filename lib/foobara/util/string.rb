@@ -13,7 +13,7 @@ module Foobara
         string = string.to_s
       end
 
-      retval = ""
+      retval = +""
 
       string.each_char do |char|
         if ["_", "-"].include?(char)
@@ -61,7 +61,7 @@ module Foobara
 
       string = string.gsub(/[-.]/, "_")
 
-      retval = ""
+      retval = +""
       is_start = true
 
       string.each_char do |char|
