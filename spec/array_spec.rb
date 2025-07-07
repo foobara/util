@@ -72,7 +72,14 @@ RSpec.describe Foobara::Util do
       let(:large_array) { [1, 2, 3, 4] }
       let(:small_array) { [1, 2, 3, 4] }
 
-      it { is_expected.to be(false) }
+      it { is_expected.to be(true) }
+    end
+
+    context "when both arrays are empty" do
+      let(:large_array) { [] }
+      let(:small_array) { [] }
+
+      it { is_expected.to be(true) }
     end
   end
 end

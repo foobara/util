@@ -38,7 +38,7 @@ module Foobara
     end
 
     def start_with?(large_array, small_array)
-      return false unless large_array.size > small_array.size
+      return false unless large_array.size >= small_array.size
 
       small_array.each.with_index do |item, index|
         return false unless large_array[index] == item
