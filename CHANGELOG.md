@@ -1,3 +1,12 @@
+## [1.0.1] - 2025-07-07
+
+- Add Util.start_with? for array comparisons
+
+## [1.0.0] - 2025-06-06
+
+- Add + unary operator to a couple strings that are mutated for forward-compatibility
+  with upcoming frozen string literals
+
 ## [0.0.12] - 2025-05-03
 
 - Add .deep_symbolize_keys
