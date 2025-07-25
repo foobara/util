@@ -1,3 +1,7 @@
+## [1.0.2] - 2025-07-25
+
+- Add .remove_arity_check to help with using lambdas in DSLs
+
 ## [1.0.1] - 2025-07-07
 
 - Add Util.start_with? for array comparisons
