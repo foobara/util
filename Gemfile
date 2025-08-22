@@ -7,7 +7,7 @@ gemspec
 
 # Development dependencies go here
 gem "foobara-rubocop-rules", ">= 1.0.0"
-gem "foobara-spec-helpers"
+gem "foobara-spec-helpers", "< 2.0.0"
 gem "guard-rspec"
 gem "pry"
 gem "pry-byebug"
