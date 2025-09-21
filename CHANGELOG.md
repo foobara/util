@@ -1,3 +1,7 @@
+## [1.0.3] - 2025-09-21
+
+- Fix bug that gives non-deterministic load order for file names that have the same depth and length
+
 ## [1.0.2] - 2025-07-25
 
 - Add .remove_arity_check to help with using lambdas in DSLs
