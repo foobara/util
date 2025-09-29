@@ -1,3 +1,7 @@
+## [1.0.4] - 2025-11-01
+
+- Add .referencing_paths to help debugging finding what object is referencing another
+
 ## [1.0.3] - 2025-09-21
 
 - Fix bug that gives non-deterministic load order for file names that have the same depth and length
