@@ -1,3 +1,7 @@
+## [1.0.5] - 2025-12-12
+
+- Add EMPTY_ARRAY frozen constant for use to avoid some allocation/garbage collection
+
 ## [1.0.4] - 2025-11-01
 
 - Add .referencing_paths to help debugging finding what object is referencing another

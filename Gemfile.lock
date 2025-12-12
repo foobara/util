@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-util (1.0.4)
+    foobara-util (1.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -12,12 +12,12 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     ffi (1.17.2-x86_64-linux-gnu)
-    foobara-rubocop-rules (1.0.6)
+    foobara-rubocop-rules (1.0.10)
       rubocop
       rubocop-rspec
     foobara-spec-helpers (0.0.4)
       foobara-util
-    formatador (1.2.2)
+    formatador (1.2.3)
       reline
     guard (2.19.1)
       formatador (>= 0.2.4)
@@ -36,7 +36,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     io-console (0.8.1)
-    json (2.15.2)
+    json (2.18.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -68,7 +68,7 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     regexp_parser (2.11.3)
-    reline (0.6.2)
+    reline (0.6.3)
       io-console (~> 0.5)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
@@ -97,15 +97,15 @@ GEM
       rubocop-ast (>= 1.47.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.47.1)
+    rubocop-ast (1.48.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-rake (0.7.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
-    rubocop-rspec (3.7.0)
+    rubocop-rspec (3.8.0)
       lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     shellany (0.0.1)
     simplecov (0.22.0)
