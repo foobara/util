@@ -1,9 +1,11 @@
+require_relative "constants"
+
 module Foobara
   module Util
     module_function
 
     def power_set(array)
-      return [[]] if array.empty?
+      return [EMPTY_ARRAY] if array.empty?
 
       head, *tail = array
       subsets = power_set(tail)
