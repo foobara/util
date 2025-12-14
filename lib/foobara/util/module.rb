@@ -56,8 +56,9 @@ module Foobara
       else
         is_a = Util.array(is_a)
         extends = Util.array(extends)
+        constants = mod.constants.sort
 
-        mod.constants.map { |const| constant_value(mod, const) }.select do |object|
+        constants.map { |const| constant_value(mod, const) }.select do |object|
           (is_a.nil? || is_a.empty? || is_a.any? { |klass| object.is_a?(klass) }) &&
             (extends.nil? || extends.empty? || (object.is_a?(Class) && extends.any? do |klass|
               object.ancestors.include?(klass)
