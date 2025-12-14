@@ -1,3 +1,7 @@
+## [1.0.6] - 2025-12-14
+
+- Make sure constants come out in a deterministic order across various systems
+
 ## [1.0.5] - 2025-12-12
 
 - Add EMPTY_ARRAY frozen constant for use to avoid some allocation/garbage collection
