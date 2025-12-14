@@ -64,6 +64,17 @@ RSpec.describe Foobara::Util do
       expect(described_class.constant_values(Foo)).to eq([Foo::Bar])
     end
 
+    context "when constants are defined out of lexical order" do
+      before do
+        stub_module "Foo::BConst"
+        stub_module "Foo::AConst"
+      end
+
+      it "returns the constants sorted in a deterministic order" do
+        expect(described_class.constant_values(Foo)).to eq([Foo::AConst, Foo::BConst, Foo::Bar])
+      end
+    end
+
     context "with classes" do
       before do
         stub_class "Foo::Class1" do
