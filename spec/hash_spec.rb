@@ -24,7 +24,7 @@ RSpec.describe Foobara::Util do
   describe ".all_symbolic_keys?" do
     it "returns true if all keys are symbols" do
       expect(described_class.all_symbolic_keys?(a: 1, b: 2)).to be(true)
-      expect(described_class.all_symbolic_keys?(a: 1, b: 2, "c" => 3)).to be(true)
+      expect(described_class.all_symbolic_keys?(a: 1, b: 2, "c" => 3)).to be(false)
     end
   end
 end
