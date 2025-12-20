@@ -9,6 +9,16 @@ module Foobara
         # :nocov:
       end
 
+      unless hash.instance_of?(::Hash)
+        unless hash.respond_to?(:to_h)
+          # :nocov:
+          raise ArgumentError, "Could not turn #{hash} into an instance of Hash"
+          # :nocov:
+        end
+
+        hash = hash.to_h
+      end
+
       hash.transform_keys(&:to_sym)
     end
 
@@ -20,6 +30,14 @@ module Foobara
       end
 
       hash.transform_keys!(&:to_sym)
+
+      unless hash.instance_of?(::Hash)
+        unless all_symbolic_keys?(hash)
+          raise ArgumentError, "Cannot symbolize keys for #{hash} because it isn't behaving like a Hash"
+        end
+      end
+
+      hash
     end
 
     def all_symbolic_keys?(hash)

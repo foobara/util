@@ -1,3 +1,8 @@
+## [1.0.7] - 2025-12-19
+
+- Fix bug where .all_symbolic_keys? would return true for a hash with a string key
+- Handle situations where Hash subclass or non-Hash are passed to .symbolize_keys
+
 ## [1.0.6] - 2025-12-14
 
 - Make sure constants come out in a deterministic order across various systems
