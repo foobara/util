@@ -5,6 +5,12 @@ RSpec.describe Foobara::Util do
         expect(described_class.underscore(:ClassMethods)).to eq("class_methods")
       end
     end
+
+    context "when empty" do
+      it "returns empty string" do
+        expect(described_class.underscore("")).to eq("")
+      end
+    end
   end
 
   describe ".underscore_sym" do
@@ -58,6 +64,14 @@ RSpec.describe Foobara::Util do
     end
   end
 
+  describe ".to_sentence" do
+    context "when empty array" do
+      it "returns empty string" do
+        expect(described_class.to_sentence([])).to eq("")
+      end
+    end
+  end
+
   describe ".to_or_sentence" do
     it "joins the phrases with 'or'" do
       expect(described_class.to_or_sentence(["foo", "bar", "baz"])).to eq("foo, bar, or baz")
@@ -73,6 +87,12 @@ RSpec.describe Foobara::Util do
   describe ".humanize" do
     it "humanizes" do
       expect(described_class.humanize(:foo_bar_baz)).to eq("Foo bar baz")
+    end
+
+    context "when empty" do
+      it "returns empty string" do
+        expect(described_class.humanize("")).to eq("")
+      end
     end
   end
 end

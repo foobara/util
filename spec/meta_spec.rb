@@ -17,8 +17,42 @@ RSpec.describe Foobara::Util do
     context "with superclass" do
       it "creates the class with the expected superclass" do
         klass = described_class.make_class("A", String)
-
         expect(klass.superclass).to be(String)
+        expect(klass.name).to eq("A")
+      end
+
+      context "when class name is a symbol" do
+        it "creates the class with the expected superclass" do
+          klass = described_class.make_class(:A, String)
+          expect(klass.superclass).to be(String)
+          expect(klass.name).to eq("A")
+        end
+      end
+
+      context "when fully-qualified" do
+        it "creates the class with the expected superclass" do
+          klass = described_class.make_class("::A", String)
+          expect(klass.superclass).to be(String)
+          expect(klass.name).to eq("A")
+        end
+      end
+
+      context "when it already exists" do
+        it "returns the existing class" do
+          # rubocop:disable Lint/ConstantDefinitionInBlock
+          # rubocop:disable RSpec/LeakyConstantDeclaration
+          class A
+            def bar = "bar"
+          end
+          # rubocop:enable RSpec/LeakyConstantDeclaration
+          # rubocop:enable Lint/ConstantDefinitionInBlock
+
+          klass = described_class.make_class("A", String) do
+            def baz = "baz"
+          end
+          expect(klass).to be(A)
+          expect(klass.new.bar).to eq("bar")
+        end
       end
     end
 

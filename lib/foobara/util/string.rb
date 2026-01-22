@@ -7,7 +7,12 @@ module Foobara
     end
 
     def camelize(string, upcase_first = false)
-      return nil if string.nil?
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
 
       if string.is_a?(::Symbol)
         string = string.to_s
@@ -33,7 +38,12 @@ module Foobara
     IS_IDENTIFIER_CHARACTER = /\w/
 
     def constantify(string)
-      return nil if string.nil?
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
 
       if string.is_a?(::Symbol)
         string = string.to_s
@@ -47,11 +57,23 @@ module Foobara
     end
 
     def constantify_sym(string)
-      constantify(string)&.to_sym
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
+
+      constantify(string).to_sym
     end
 
     def underscore(string)
-      return nil if string.nil?
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
 
       if string.is_a?(::Symbol)
         string = string.to_s
@@ -86,11 +108,25 @@ module Foobara
     end
 
     def kebab_case(string)
-      underscore(string)&.gsub("_", "-")
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
+
+      underscore(string).gsub("_", "-")
     end
 
     def underscore_sym(string)
-      underscore(string)&.to_sym
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
+
+      underscore(string).to_sym
     end
 
     def to_sentence(strings, connector = ", ", last_connector = ", and ")
@@ -110,7 +146,12 @@ module Foobara
     end
 
     def humanize(string)
-      return nil if string.nil?
+      if string.nil?
+        # :nocov:
+        warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
+        return nil
+        # :nocov:
+      end
 
       if string.is_a?(::Symbol)
         string = string.to_s

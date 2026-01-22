@@ -137,6 +137,16 @@ RSpec.describe Foobara::Util do
         expect(result).to eq(sorted_hash)
         expect(result).to be(unsorted_hash)
       end
+
+      context "when already sorted" do
+        it "is a noop" do
+          already_sorted = sorted_hash.dup
+          result = described_class.sort_by_keys!(already_sorted)
+
+          expect(result).to eq(sorted_hash)
+          expect(result).to be(already_sorted)
+        end
+      end
     end
   end
 end

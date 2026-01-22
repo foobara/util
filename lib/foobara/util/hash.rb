@@ -77,9 +77,13 @@ module Foobara
       hash.transform_keys!(&:to_sym)
 
       unless hash.instance_of?(::Hash)
+        # :nocov:
         unless all_symbolic_keys?(hash)
-          raise ArgumentError, "Cannot symbolize keys for #{hash} because it isn't behaving like a Hash"
+          # This can happen with HashWithIndifferentAccess
+          raise ArgumentError,
+                "Cannot symbolize keys for #{hash} because its transform_keys! method does not behave as expected"
         end
+        # :nocov:
       end
 
       hash
