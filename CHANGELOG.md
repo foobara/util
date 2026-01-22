@@ -1,7 +1,11 @@
+## [1.0.8] - 2026-01-22
+
+- Add .sort_by_keys/.sort_by_keys! for hashes
+
 ## [1.0.7] - 2025-12-19
 
 - Fix bug where .all_symbolic_keys? would return true for a hash with a string key
-- Handle situations where Hash subclass or non-Hash are passed to .symbolize_keys
+- Handle situations where Hash subclass or non-Hash are passed to .symbolize_keys and .symbolize_keys!
 
 ## [1.0.6] - 2025-12-14
 

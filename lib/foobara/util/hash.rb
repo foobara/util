@@ -2,6 +2,51 @@ module Foobara
   module Util
     module_function
 
+    def sort_by_keys(hash)
+      keys = hash.keys
+
+      keys.sort!
+
+      sorted_hash = {}
+
+      keys.each do |key|
+        sorted_hash[key] = hash[key]
+      end
+
+      sorted_hash
+    end
+
+    def sort_by_keys!(hash)
+      last_key = keys_to_move = nil
+
+      hash.each_key do |key|
+        if last_key
+          if key < last_key
+            if keys_to_move
+              keys_to_move << key
+            else
+              keys_to_move = [key]
+            end
+
+            next
+          end
+        end
+
+        last_key = key
+      end
+
+      return hash unless keys_to_move
+
+      keys_to_move.sort!
+
+      keys_to_move.each do |key|
+        value = hash.delete(key)
+        hash[key] = value
+      end
+
+      hash
+    end
+
     def symbolize_keys(hash)
       unless all_symbolizable_keys?(hash)
         # :nocov:
