@@ -8,28 +8,27 @@ on:
   pull_request:
 
 jobs:
-  rspec:
+  ci:
     runs-on: ubuntu-latest
-    name: RSpec
+    name: RSpec and Rubocop
+    strategy:
+      matrix:
+        ruby: ['3.4', '4.0']
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ env.ruby_version }}
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Run rspec
         run: bundle exec rspec
-  rubocop:
-    runs-on: ubuntu-latest
-    name: Rubocop
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.ruby_version }}
-          bundler-cache: true
       - name: Run rubocop
         run: bundle exec rubocop
+#      - name: Upload coverage directory
+#        if: always()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: coverage-report
+#          path: coverage/

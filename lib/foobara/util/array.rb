@@ -24,7 +24,7 @@ module Foobara
     end
 
     def all_symbolic_elements?(array)
-      array.all? { |key| key.is_a?(Symbol) }
+      array.all?(Symbol)
     end
 
     def all_symbolizable_elements?(array)

@@ -39,9 +39,8 @@ RSpec.describe Foobara::Util do
 
         expect(described_class.object_id_to_object(object_id).object_id).to eq(o.object_id)
 
-        # rubocop:disable Lint/UselessAssignment
+        # rubocop:disable-next Lint/UselessAssignment
         o = nil
-        # rubocop:enable Lint/UselessAssignment
         GC.start
 
         expect(described_class.object_id_to_object(object_id)).to be_nil

@@ -49,16 +49,16 @@ module Foobara
 
     def symbolize_keys(hash)
       unless all_symbolizable_keys?(hash)
-        # :nocov:
+        # simplecov:disable
         raise "Cannot symbolize keys for #{hash} because they are not all symbolizable"
-        # :nocov:
+        # simplecov:enable
       end
 
       unless hash.instance_of?(::Hash)
         unless hash.respond_to?(:to_h)
-          # :nocov:
+          # simplecov:disable
           raise ArgumentError, "Could not turn #{hash} into an instance of Hash"
-          # :nocov:
+          # simplecov:enable
         end
 
         hash = hash.to_h
@@ -69,21 +69,21 @@ module Foobara
 
     def symbolize_keys!(hash)
       unless all_symbolizable_keys?(hash)
-        # :nocov:
+        # simplecov:disable
         raise "Cannot symbolize keys for #{hash} because they are not all symbolizable"
-        # :nocov:
+        # simplecov:enable
       end
 
       hash.transform_keys!(&:to_sym)
 
       unless hash.instance_of?(::Hash)
-        # :nocov:
+        # simplecov:disable
         unless all_symbolic_keys?(hash)
           # This can happen with HashWithIndifferentAccess
           raise ArgumentError,
                 "Cannot symbolize keys for #{hash} because its transform_keys! method does not behave as expected"
         end
-        # :nocov:
+        # simplecov:enable
       end
 
       hash

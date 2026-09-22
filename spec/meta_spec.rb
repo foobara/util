@@ -40,11 +40,10 @@ RSpec.describe Foobara::Util do
       context "when it already exists" do
         it "returns the existing class" do
           # rubocop:disable Lint/ConstantDefinitionInBlock
-          # rubocop:disable RSpec/LeakyConstantDeclaration
+          # rubocop:disable-next RSpec/LeakyConstantDeclaration
           class A
             def bar = "bar"
           end
-          # rubocop:enable RSpec/LeakyConstantDeclaration
           # rubocop:enable Lint/ConstantDefinitionInBlock
 
           klass = described_class.make_class("A", String) do

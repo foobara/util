@@ -8,10 +8,10 @@ module Foobara
 
     def camelize(string, upcase_first = false)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       if string.is_a?(::Symbol)
@@ -39,10 +39,10 @@ module Foobara
 
     def constantify(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       if string.is_a?(::Symbol)
@@ -58,10 +58,10 @@ module Foobara
 
     def constantify_sym(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       constantify(string).to_sym
@@ -69,10 +69,10 @@ module Foobara
 
     def underscore(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       if string.is_a?(::Symbol)
@@ -109,10 +109,10 @@ module Foobara
 
     def kebab_case(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       underscore(string).gsub("_", "-")
@@ -120,10 +120,10 @@ module Foobara
 
     def underscore_sym(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       underscore(string).to_sym
@@ -147,10 +147,10 @@ module Foobara
 
     def humanize(string)
       if string.nil?
-        # :nocov:
+        # simplecov:disable
         warn "Passing nil to .#{__callee__} is deprecated. Pass a string only."
         return nil
-        # :nocov:
+        # simplecov:enable
       end
 
       if string.is_a?(::Symbol)

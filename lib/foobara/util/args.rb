@@ -4,15 +4,15 @@ module Foobara
 
     def args_and_opts_to_opts(args, opts)
       unless args.is_a?(::Array)
-        # :nocov:
+        # simplecov:disable
         raise ArgumentError, "args must be an array of 0 or 1 hashes but received #{args}"
-        # :nocov:
+        # simplecov:enable
       end
 
       unless opts.is_a?(::Hash)
-        # :nocov:
+        # simplecov:disable
         raise ArgumentError, "opts must be a hash not a #{opts.class}"
-        # :nocov:
+        # simplecov:enable
       end
 
       case args.size
@@ -23,9 +23,9 @@ module Foobara
 
         if opts && !opts.empty?
           unless arg.is_a?(::Hash)
-            # :nocov:
+            # simplecov:disable
             raise ArgumentError, "opts must be a hash not a #{arg.class}"
-            # :nocov:
+            # simplecov:enable
           end
 
           arg.merge(opts)
@@ -33,9 +33,9 @@ module Foobara
           arg
         end
       else
-        # :nocov:
+        # simplecov:disable
         raise ArgumentError, "args must be an array of 0 or 1 hashes but received #{args}"
-        # :nocov:
+        # simplecov:enable
       end
     end
 
@@ -43,15 +43,15 @@ module Foobara
       if arg && !arg.empty?
         if opts && !opts.empty?
           unless opts.is_a?(::Hash)
-            # :nocov:
+            # simplecov:disable
             raise ArgumentError, "opts must be a hash not a #{opts}"
-            # :nocov:
+            # simplecov:enable
           end
 
           unless arg.is_a?(::Hash)
-            # :nocov:
+            # simplecov:disable
             raise ArgumentError, "arg must be a hash if present when opts is present"
-            # :nocov:
+            # simplecov:enable
           end
 
           arg.merge(opts)
@@ -70,9 +70,9 @@ module Foobara
     # argument with stuff merged into the argument if needed.
     def args_and_opts_to_args(args, opts)
       unless args.is_a?(::Array)
-        # :nocov:
+        # simplecov:disable
         raise ArgumentError, "args must be an array of 0 or 1 hashes but received #{args}"
-        # :nocov:
+        # simplecov:enable
       end
 
       case args.size
@@ -84,9 +84,9 @@ module Foobara
           arg = args.first
 
           unless arg.is_a?(::Hash)
-            # :nocov:
+            # simplecov:disable
             raise ArgumentError, "Expected #{arg.inspect} to be a Hash"
-            # :nocov:
+            # simplecov:enable
           end
 
           [arg_and_opts_to_arg(args.first, opts)]
@@ -96,9 +96,9 @@ module Foobara
 
         [arg_and_opts_to_arg(args.first, opts)]
       else
-        # :nocov:
+        # simplecov:disable
         raise ArgumentError, "args must be an array of 0 or 1 hashes but received #{args}"
-        # :nocov:
+        # simplecov:enable
       end
     end
   end

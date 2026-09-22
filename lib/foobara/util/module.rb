@@ -37,9 +37,9 @@ module Foobara
 
     def constant_values(mod, is_a: nil, extends: nil, inherit: false)
       if inherit && !mod.is_a?(Class)
-        # :nocov:
+        # simplecov:disable
         raise "Cannot pass inherit: true for something that is not a Class"
-        # :nocov:
+        # simplecov:enable
       end
 
       if inherit
@@ -71,9 +71,9 @@ module Foobara
       mod.const_get(name)
     rescue NameError => e
       if mod == Object || e.message !~ /uninitialized constant (.*::)?#{name}\z/
-        # :nocov:
+        # simplecov:disable
         raise
-        # :nocov:
+        # simplecov:enable
       end
 
       mod = if mod.name&.include?("::")

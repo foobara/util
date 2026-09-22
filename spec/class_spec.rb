@@ -2,23 +2,23 @@ RSpec.describe Foobara::Util do
   before do
     stub_class "Foo" do
       def a
-        # :nocov:
+        # simplecov:disable
         "foo a"
-        # :nocov:
+        # simplecov:enable
       end
     end
     stub_class "Foo::Bar", Foo do
       def a
-        # :nocov:
+        # simplecov:disable
         "bar a"
-        # :nocov:
+        # simplecov:enable
       end
     end
     stub_class "Foo::Bar::Baz", Foo::Bar do
       def a
-        # :nocov:
+        # simplecov:disable
         "baz a"
-        # :nocov:
+        # simplecov:enable
       end
     end
   end

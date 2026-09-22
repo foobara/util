@@ -20,24 +20,24 @@ RSpec.describe Foobara::TruncatedInspect do
   describe "#inspect" do
     subject { object.inspect }
 
-    it { is_expected.to match(/foo="bar"/) }
+    it { is_expected.to include('foo="bar"') }
 
     context "when foo is an array" do
       let(:foo) { [1, 2, 3] }
 
-      it { is_expected.to match(/foo=\[1, 2, 3\]/) }
+      it { is_expected.to include('foo=[1, 2, 3]') }
 
       context "when foo is too long" do
         let(:foo) { [1] * 100 }
 
-        it { is_expected.to match(/foo=\[\.\.\.\]/) }
+        it { is_expected.to include('foo=[...]') }
       end
     end
 
     context "when foo is a hash" do
       let(:foo) { { a: 1, b: 2, c: 3 } }
 
-      it { is_expected.to match(/foo=\{a: 1, b: 2, c: 3\}/) }
+      it { is_expected.to include('foo={a: 1, b: 2, c: 3}') }
 
       context "when foo is too long" do
         let(:foo) do
@@ -46,7 +46,7 @@ RSpec.describe Foobara::TruncatedInspect do
           end
         end
 
-        it { is_expected.to match(/foo=\{\.\.\.\}/) }
+        it { is_expected.to include('foo={...}') }
       end
     end
 

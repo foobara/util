@@ -56,9 +56,9 @@ module Foobara
                   when :ivar
                     via
                   else
-                    # :nocov:
+                    # simplecov:disable
                     raise "Unexpected via_type #{part.via_type}"
-                    # :nocov:
+                    # simplecov:enable
                   end
 
             class_part = if referenced_by.is_a?(Module)
@@ -119,9 +119,8 @@ module Foobara
         end
 
         objects.each do |object|
-          # rubocop:disable Lint/HashCompareByIdentity
+          # rubocop:disable-next Lint/HashCompareByIdentity
           references[object.object_id] = object_id_references(object)
-          # rubocop:enable Lint/HashCompareByIdentity
         end
 
         references

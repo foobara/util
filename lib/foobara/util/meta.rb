@@ -39,12 +39,11 @@ module Foobara
       end
 
       unless already_exists
-        # rubocop:disable Security/Eval, Style/DocumentDynamicEvalDefinition
+        # rubocop:disable-next Security/Eval, Style/DocumentDynamicEvalDefinition
         eval(<<~RUBY, binding, __FILE__, __LINE__ + 1)
           #{which} ::#{name}#{inherit}
           end
         RUBY
-        # rubocop:enable Security/Eval, Style/DocumentDynamicEvalDefinition
       end
 
       klass = Object.const_get(name, false)

@@ -10,9 +10,9 @@ module Foobara
       files = Dir[glob]
 
       if files.empty?
-        # :nocov:
+        # simplecov:disable
         raise "Didn't find anything to require for #{glob}"
-        # :nocov:
+        # simplecov:enable
       end
 
       files.sort_by { |file| [file.count("/"), file.length, file] }.reverse.each do |f|
