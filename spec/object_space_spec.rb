@@ -23,11 +23,11 @@ RSpec.describe Foobara::Util do
       referencing_paths = described_class.referencing_paths(object)
 
       expect(referencing_paths).to include([
-                                             "AnonModule:#{anon_module.object_id}::ANON_CONSTANT",
+                                             "AnonModule:#{anon_module.__id__}::ANON_CONSTANT",
                                              "SomeModule::SOME_CONSTANT",
-                                             "<Hash:#{a_hash.object_id}>[:foo]",
-                                             "<Array:#{an_array.object_id}>[1]",
-                                             "<Object:#{another_object.object_id}>@object"
+                                             "<Hash:#{a_hash.__id__}>[:foo]",
+                                             "<Array:#{an_array.__id__}>[1]",
+                                             "<Object:#{another_object.__id__}>@object"
                                            ])
     end
   end
@@ -37,9 +37,9 @@ RSpec.describe Foobara::Util do
       # perhaps not the greatest interface?
       it "returns nil" do
         o = Object.new
-        object_id = o.object_id
+        object_id = o.__id__
 
-        expect(described_class.object_id_to_object(object_id).object_id).to eq(o.object_id)
+        expect(described_class.object_id_to_object(object_id).__id__).to eq(o.__id__)
 
         # rubocop:disable-next Lint/UselessAssignment
         o = nil

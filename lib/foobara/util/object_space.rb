@@ -19,7 +19,7 @@ module Foobara
       end
 
       def referencing_paths(object)
-        paths = _referencing_paths(object.object_id, object_id_referenced_by_map)
+        paths = _referencing_paths(object.__id__, object_id_referenced_by_map)
         paths.sort_by!(&:size)
         paths.reverse!
         paths
@@ -67,12 +67,12 @@ module Foobara
                            if name
                              name
                            elsif referenced_by.is_a?(Class)
-                             "AnonClass:#{referenced_by.object_id}"
+                             "AnonClass:#{referenced_by.__id__}"
                            else
-                             "AnonModule:#{referenced_by.object_id}"
+                             "AnonModule:#{referenced_by.__id__}"
                            end
                          else
-                           "<#{referenced_by.class}:#{referenced_by.object_id}>"
+                           "<#{referenced_by.class}:#{referenced_by.__id__}>"
                          end
 
             resolved_parts << "#{class_part}#{via}"
@@ -119,8 +119,7 @@ module Foobara
         end
 
         objects.each do |object|
-          # rubocop:disable-next Lint/HashCompareByIdentity
-          references[object.object_id] = object_id_references(object)
+          references[object.__id__] = object_id_references(object)
         end
 
         references
@@ -142,12 +141,12 @@ module Foobara
       end
 
       def object_id_references(object)
-        object_id = object.object_id
+        object_id = object.__id__
 
         references = object.instance_variables.map do |ivar|
           ReferencePathPart.new(
             object_id,
-            object.instance_variable_get(ivar).object_id,
+            object.instance_variable_get(ivar).__id__,
             ivar,
             :ivar
           )
@@ -158,7 +157,7 @@ module Foobara
           object.constants(false).each do |constant_name|
             references << ReferencePathPart.new(
               object_id,
-              object.const_get(constant_name).object_id,
+              object.const_get(constant_name).__id__,
               constant_name,
               :constant
             )
@@ -168,11 +167,10 @@ module Foobara
             nil
           end
         when ::Array, ::Set
-
           object.each.with_index do |element, index|
             references << ReferencePathPart.new(
               object_id,
-              element.object_id,
+              element.__id__,
               index,
               :array_index
             )
@@ -180,8 +178,8 @@ module Foobara
 
         when ::Hash
           object.each_pair do |k, v|
-            references << ReferencePathPart.new(object_id, k.object_id, k, :hash_key)
-            references << ReferencePathPart.new(object_id, v.object_id, k, :hash_value)
+            references << ReferencePathPart.new(object_id, k.__id__, k, :hash_key)
+            references << ReferencePathPart.new(object_id, v.__id__, k, :hash_value)
           end
         end
 

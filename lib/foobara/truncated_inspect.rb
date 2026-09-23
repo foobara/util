@@ -52,7 +52,7 @@ module Foobara
 
         instance_vars = instance_vars.join(", ")
 
-        result = "#<#{self.class.name}:0x#{object_id.to_s(16)} #{instance_vars}>"
+        result = "#<#{self.class.name}:0x#{__id__.to_s(16)} #{instance_vars}>"
 
         if result.size > MAX_LENGTH
           result = "#{result[0..(MAX_LENGTH - 5)]}...>"
