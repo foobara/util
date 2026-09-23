@@ -1,3 +1,5 @@
+require "foobara/util/object_space"
+
 RSpec.describe Foobara::Util do
   describe "#referencing_paths" do
     it "returns paths of references that lead to the object" do
