@@ -12,3 +12,6 @@ Naming/FileName:
   inherit_mode:
     merge:
       - Exclude
+
+RSpec/AnyInstance:
+  Enabled: false

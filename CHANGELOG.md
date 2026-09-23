@@ -1,3 +1,7 @@
+## [1.0.9] - 2026-09-22
+
+- Don't load "foobara/util/object_space" by default
+
 ## [1.0.8] - 2026-01-22
 
 - Add .sort_by_keys/.sort_by_keys! for hashes

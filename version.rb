@@ -1,6 +1,6 @@
 module Foobara
   module Util
-    VERSION = "1.0.8".freeze
+    VERSION = "1.1.0".freeze
     MINIMUM_RUBY_VERSION = ">= 3.4.0".freeze
   end
 end

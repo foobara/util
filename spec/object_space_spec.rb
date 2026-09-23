@@ -1,6 +1,31 @@
 require "foobara/util/object_space"
 
 RSpec.describe Foobara::Util do
+  def without_deprecation_warnings(mod, method_name)
+    original_method = mod.instance_method(method_name)
+
+    allow_any_instance_of(mod).to receive(method_name) do |target, *args, **opts|
+      old_deprecated_flag = Warning[:deprecated]
+
+      begin
+        Warning[:deprecated] = false
+        if target.name == "RSpec::Core::Formatters"
+          # let's just simulate loading constants here to avoid a warning when loading :BisectDRbFormatter
+          next 1
+        end
+
+        original_method.bind_call(target, *args, **opts)
+      ensure
+        Warning[:deprecated] = old_deprecated_flag
+      end
+    end
+  end
+
+  before do
+    without_deprecation_warnings(described_class.singleton_class, :object_id_to_object)
+    without_deprecation_warnings(Module, :const_get)
+  end
+
   describe "#referencing_paths" do
     it "returns paths of references that lead to the object" do
       object = Object.new

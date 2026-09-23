@@ -4,10 +4,11 @@ require "pry"
 require "pry-byebug"
 require "rspec/its"
 require "simplecov"
+
 Warning[:deprecated] = true
 
 SimpleCov.start do
-  enable_coverage :branch
+  # enable_coverage :branch
   enable_coverage :line
   minimum_coverage line: 100 # , branch: 100
 end
