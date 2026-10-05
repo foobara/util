@@ -26,7 +26,11 @@ module Foobara
     end
 
     def non_full_name_underscore(mod)
-      underscore(non_full_name(mod))
+      name = non_full_name(mod)
+
+      if name
+        underscore(name)
+      end
     end
 
     def constant_value(mod, constant, inherit: false)

@@ -1,4 +1,8 @@
-## [1.0.9] - 2026-09-22
+## [1.1.1] - 2026-10-04
+
+- Fix deprecation warning when calling .non_full_name_underscore with an anonymous class
+
+## [1.1.0] - 2026-09-22
 
 - Don't load "foobara/util/object_space" by default
 
